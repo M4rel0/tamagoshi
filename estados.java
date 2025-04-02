@@ -3,6 +3,7 @@ import java.util.Random;
 public class estados {
     private double dias;
     private int fome;
+    private int sede;
     private int idade;
     private int comidas;
     private final String nome;
@@ -10,8 +11,9 @@ public class estados {
     private int felicidade;
     private boolean vivo;
 
-    public estados(int fome, int idade, int comidas, String nome, int cansaco, int felicidade, double dias,
+    public estados(int fome, int sede, int idade, int comidas, String nome, int cansaco, int felicidade, double dias,
             boolean vivo) {
+        this.sede = sede;
         this.fome = fome;
         this.idade = idade;
         this.comidas = comidas;
@@ -35,8 +37,13 @@ public class estados {
         int felicidade = 80;
         int dias = 0;
         boolean vivo = true;
+        int sede = 20;
 
-        return new estados(fome, idade, comidas, nomeAleatorio, cansaco, felicidade, dias, vivo);
+        return new estados(fome, idade, sede, comidas, nomeAleatorio, cansaco, felicidade, dias, vivo);
+    }
+
+    public int getSede() {
+        return sede;
     }
 
     public int getCansaco() {
@@ -72,12 +79,16 @@ public class estados {
     }
 
     public String estadosAtuais() {
-        return String.format("Cansaço: %d, Comidas: %d, Dias: %.2f, Felicidade: %d, Fome: %d",
-                getCansaco(), getComidas(), getDias(), getFelicidade(), getFome());
+        return String.format(" Fome: %d,Sede: %d, Cansaço: %d,Felicidade: %d, Comidas: %d, Dias: %.2f,",
+                getFome(), getSede(), getCansaco(), getFelicidade(), getComidas(), getDias());
     }
 
     public void setVivo(boolean vivo) {
         this.vivo = vivo;
+    }
+
+    public void setSede(int sede) {
+        this.sede = sede;
     }
 
     public void setFome(int fome) {

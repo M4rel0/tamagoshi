@@ -23,7 +23,7 @@ public class acoes {
 
     public static void brincar(estados tamagosh) {
         Random aleatorio = new Random();
-
+        int sedeAtual = tamagosh.getSede();
         int cansacoAtual = tamagosh.getCansaco();
         int felicidadeAtual = tamagosh.getFelicidade();
         int fomeAtual = tamagosh.getFome();
@@ -36,7 +36,8 @@ public class acoes {
             tamagosh.setFome(Math.min(100, fomeAtual + valorAleatorio));
             tamagosh.setFelicidade(Math.min(100, felicidadeAtual + 15));
             tamagosh.setCansaco(Math.min(100, cansacoAtual + 10));
-            tamagosh.setDias((Math.max(0, diastual + 0.5)));
+            tamagosh.setDias((Math.max(0, diastual + 0.4)));
+            tamagosh.setSede(Math.min(100, sedeAtual + 6));
 
             System.out
                     .println(" fome: " + tamagosh.getFome() + " felicidade: " + tamagosh.getFelicidade() + " cancaco: "
@@ -53,6 +54,24 @@ public class acoes {
 
             }
 
+        }
+
+    }
+
+    public static void dormir(estados tamagosh) {
+        Random aleatorio = new Random();
+        int cansacoAtual = tamagosh.getCansaco();
+        int felicidadeAtual = tamagosh.getFelicidade();
+        int fomeAtual = tamagosh.getFome();
+        int sedeAtual = tamagosh.getSede();
+        double diastual = tamagosh.getDias();
+
+        if (estaVivo(tamagosh)) {
+            tamagosh.setFome(Math.min(100, fomeAtual + 7));
+            tamagosh.setCansaco(Math.max(0, cansacoAtual - (6 + aleatorio.nextInt(12))));
+            tamagosh.setDias(diastual + 0.5);
+            tamagosh.setFelicidade(Math.min(100, felicidadeAtual + (3 + aleatorio.nextInt(5))));
+            tamagosh.setSede(Math.min(100, sedeAtual + 6));
         }
 
     }

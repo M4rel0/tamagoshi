@@ -75,4 +75,32 @@ public class acoes {
         }
 
     }
+
+    public static void tomarAgua(estados tamagosh) {
+
+        Random aleatorio = new Random();
+        int felicidadeAtual = tamagosh.getFelicidade();
+        int fomeAtual = tamagosh.getFome();
+        int sedeAtual = tamagosh.getSede();
+        double diastual = tamagosh.getDias();
+        if (estaVivo(tamagosh)) {
+            tamagosh.setSede(Math.max(0, sedeAtual + (-3 - aleatorio.nextInt(5))));
+            tamagosh.setFome(Math.max(0, fomeAtual - 1));
+            tamagosh.setFelicidade(Math.min(100, felicidadeAtual + 1));
+            tamagosh.setDias(diastual + 0.1);
+        }
+
+    }
+
+    public static void fazerCarinho(estados tamagosh) {
+        Random aleatorio = new Random();
+        int felicidadeAtual = tamagosh.getFelicidade();
+        double diastual = tamagosh.getDias();
+        int cansacoAtual = tamagosh.getCansaco();
+        if (estaVivo(tamagosh)) {
+            tamagosh.setFelicidade(Math.min(100, felicidadeAtual + (9 + aleatorio.nextInt(6))));
+            tamagosh.setDias(diastual + 0.2);
+            tamagosh.setCansaco(Math.max(0, cansacoAtual - (1 + aleatorio.nextInt(3))));
+        }
+    }
 }

@@ -35,19 +35,24 @@ public class TamagotchiManager {
                 }
                 case "3" -> {
                     System.out.println("Seu Tamagotchi bebeu água!");
+                    acoes.tomarAgua(meuTamagoshi);
                 }
                 case "4" -> {
                     System.out.println("Seu Tamagotchi está brincando!");
+                    acoes.brincar(meuTamagoshi);
                 }
                 case "5" -> {
                     System.out.println("Seu Tamagotchi adorou o carinho!");
+                    acoes.fazerCarinho(meuTamagoshi);
                 }
                 case "0" -> {
                     System.out.println("Saindo do programa...");
+                    System.out.println("De Tchau para seu amiguinho!");
                     return;
                 }
                 default -> System.out.println("Opção inválida. Tente novamente.");
             }
         }
+
     }
 }
